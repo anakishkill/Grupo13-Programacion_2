@@ -1,2 +1,0 @@
-class Anses():
-    pass
