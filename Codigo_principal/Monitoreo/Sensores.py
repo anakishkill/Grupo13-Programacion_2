@@ -1,2 +1,4 @@
 class Sensores():
-    pass
+    def reporte():
+        pass
+    
