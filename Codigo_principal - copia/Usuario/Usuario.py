@@ -1,6 +1,9 @@
 from Monitoreo.Anses import *
 
+
 class Usuario:
+    tipo_usuario = ()
+
     def checkNombre(self, valor, tipo):
         nombre = input("Ingresar un nombre de usuario: ")
         check1 = Anses(tipo).confirmarNombre(nombre, tipo)
@@ -58,6 +61,7 @@ class Usuario:
                 contra = Usuario().checkContra()
                 if cuil and contra:
                     print("Ingreso completo, bienvenido")
+            tipo_usuario = ("ciudadano")
 
         elif tipo_usuario == "a":
             if ingreso == "u":
@@ -75,3 +79,4 @@ class Usuario:
                 contra = Usuario().checkContra()
                 if cuil and contra:
                     print("Ingreso completo, bienvenido")
+            tipo_usuario = ("administrador")
