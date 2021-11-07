@@ -1,4 +1,5 @@
 from io import open
+import csv
 
 class Manager:
     def validarCiudadano(self):
@@ -6,22 +7,23 @@ class Manager:
 
 
 class Anses:
-    def confirmacion(self, dato):
-        with open("Doc_anses.txt", "r") as file:
-            l = file.readlines()
-            for i in l:
-                if i == f"{dato}\n":
+    def confirmacion(self, dato, num):
+        with open("DB_usuario.csv", "r") as file:
+            reader = csv.reader(file, delimiter=",")
+            for linea in reader:
+                if dato == linea[num]:
                     return True
             return False
 
+
     def confirmarCuil(self, cuil):
-        return Anses().confirmacion(cuil)
+        return Anses().confirmacion(cuil, 0)
 
     def confirmarTelef(self, telef):
-        return Anses().confirmacion(telef)
+        return Anses().confirmacion(telef, 1)
 
     def confirmarZona(self, zona):
-        return Anses().confirmacion(zona)
+        return Anses().confirmacion(zona, 3)
 
     def agregarDato(self, cuil, telef, zona):
         a = Anses().confirmarCuil(cuil)
@@ -29,11 +31,8 @@ class Anses:
         if a or b:
             return print("Datos ya usados, intentelo de nuevo")
         else:
-            with open("Doc_anses.txt", "a") as file:
-                C = f"\n{cuil}"
-                T = f"\n{telef}"
-                Z = f"\n{zona}"
-                file.write(C)
-                file.write(T)
-                file.write(Z)
-                file.close()
+            f = open("DB_usuario.csv", "a", newline="")
+            writer = csv.writer(f)
+            tupla_nueva = (cuil, telef, zona)
+            writer.writerow(tupla_nueva)
+            f.close()
