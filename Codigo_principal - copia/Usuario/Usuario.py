@@ -6,10 +6,10 @@ class Usuario:
 
     def checkNombre(self, valor, tipo):
         nombre = input("Ingresar un nombre de usuario: ")
-        check1 = Anses(tipo).confirmarNombre(nombre, tipo)
+        check1 = Anses(tipo).confirmarNombre(nombre)
         while check1 == valor:
             nombre = input("Nombre de usuario incorrecto. Ingresar un nombre de usuario: ")
-            check1 = Anses(tipo).confirmarNombre(nombre, tipo)
+            check1 = Anses(tipo).confirmarNombre(nombre)
         return nombre
 
     def checkContra(self):
@@ -22,13 +22,13 @@ class Usuario:
 
     def checkCuil(self, valor, tipo):
         cuil = input("Ingrese su CUIL: ")
-        while Anses(tipo).confirmarCuil(cuil, tipo) == valor:
+        while Anses(tipo).confirmarCuil(cuil) == valor:
             cuil = input("CUIL incorrecto. Ingrese su CUIL: ")
         return cuil
 
     def checkTelef(self, valor, tipo):
         telef = input("Ingrese su número de teléfono: ")
-        while Anses(tipo).confirmarTelef(telef, tipo) == valor:
+        while Anses(tipo).confirmarTelef(telef) == valor:
             telef = input("Número de teléfono incorrecto. Ingrese su número de teléfono: ")
         return telef
 
@@ -40,7 +40,7 @@ class Usuario:
 
         zona = input("Ingrese su zona actual: ")
 
-        Anses("ciudadano").agregarUsuario(nombre, contra, cuil, telef, zona, "ciudadano")
+        Anses("ciudadano").agregarUsuario(nombre, contra, cuil, telef, zona)
 
     def ingresar(self):
         tipo_usuario = input("¿Es usted ciudadano (c) o administrador (a)? ")
