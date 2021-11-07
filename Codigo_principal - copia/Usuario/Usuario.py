@@ -32,15 +32,15 @@ class Usuario:
             telef = input("Número de teléfono incorrecto. Ingrese su número de teléfono: ")
         return telef
 
-    def registrar(self, tipo):
-        nombre = Usuario().checkNombre(True, tipo)
+    def registrar(self):
+        nombre = Usuario().checkNombre(True, "ciudadano")
         contra = Usuario().checkContra()
-        cuil = Usuario().checkCuil(True, tipo)
-        telef = Usuario().checkTelef(True, tipo)
+        cuil = Usuario().checkCuil(True, "ciudadano")
+        telef = Usuario().checkTelef(True, "ciudadano")
 
         zona = input("Ingrese su zona actual: ")
 
-        Anses(tipo).agregarUsuario(nombre, contra, cuil, telef, zona, tipo)
+        Anses("ciudadano").agregarUsuario(nombre, contra, cuil, telef, zona, "ciudadano")
 
     def ingresar(self):
         tipo_usuario = input("¿Es usted ciudadano (c) o administrador (a)? ")
