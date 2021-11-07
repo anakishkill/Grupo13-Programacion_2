@@ -19,27 +19,27 @@ class Anses:
                     return True
             return False
 
-    def confirmarNombre(self, nombre, tipo):
-        return Anses(tipo).confirmacion(nombre, 0)
+    def confirmarNombre(self, nombre):
+        return Anses(self.tipo).confirmacion(nombre, 0)
 
-    def confirmarCuil(self, cuil, tipo):
-        return Anses(tipo).confirmacion(cuil, 2)
+    def confirmarCuil(self, cuil):
+        return Anses(self.tipo).confirmacion(cuil, 2)
 
-    def confirmarTelef(self, telef, tipo):
-        return Anses(tipo).confirmacion(telef, 3)
+    def confirmarTelef(self, telef):
+        return Anses(self.tipo).confirmacion(telef, 3)
 
-    def confirmarZona(self, zona, tipo):
-        return Anses(tipo).confirmacion(zona, 4)
+    def confirmarZona(self, zona):
+        return Anses(self.tipo).confirmacion(zona, 4)
 
-    def agregarUsuario(self, nombre, contrasena, cuil, telef, zona, tipo):
-        a = Anses(tipo).confirmarCuil(cuil, tipo)
-        b = Anses(tipo).confirmarTelef(telef, tipo)
-        c = Anses(tipo).confirmarNombre(nombre, tipo)
+    def agregarUsuario(self, nombre, contrasena, cuil, telef, zona):
+        a = Anses("ciudadano").confirmarCuil(cuil)
+        b = Anses("ciudadano").confirmarTelef(telef)
+        c = Anses("ciudadano").confirmarNombre(nombre)
         if a or b or c:
             return print("Datos ya usados, intentelo de nuevo")
         else:
             f = open("../Database/DB_ciudadano.csv", "a", newline="")
             writer = csv.writer(f)
-            tupla_nueva = (nombre, contrasena, cuil, telef, zona)
+            tupla_nueva = (nombre, contrasena, cuil, telef, zona, "Desbloqueado")
             writer.writerow(tupla_nueva)
             f.close()
