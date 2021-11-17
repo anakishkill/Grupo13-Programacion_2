@@ -1,14 +1,14 @@
 
 
-class Administrador():
-    def bloquear():
+class Administrador:
+    def bloquear(self):
         pass
 
-    def desbloquear():
+    def desbloquear(self):
         pass
 
-    def darAlta():
+    def darAlta(self):
         pass
 
-class ABM_Admin():
+class ABM_Admin:
     pass
